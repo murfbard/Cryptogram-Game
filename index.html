@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="CryptoApp">
+<head>
+  <meta charset="utf-8">
+  <title>Keith's Cryptogram Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="angular.js"></script>
+  <script src="controllers.js"></script>
+</head>
+<body ng-controller="LettersCtrl" style="padding-top:10px;">
+
+	<div class="container">
+	
+      <div class="jumbotron">
+        <h1>Cryptogram with Angular</h1>
+        <p class="lead">I wanted to show that I can use AngularJS, so I whipped together this game for you to try.  Try and guess the name of my dog.</p>
+      </div>
+	  <div class="row marketing">
+		<div class="col-lg-12">
+			<h1>{{Win()}}<h1>
+			
+		</div>
+	  </div>
+      <div class="row marketing">
+        <div class="col-lg-6">
+			<h2>Original: </h2>
+			<h3>WMV EPJVIH SJ KSXKEQ</h3>
+			<h2>Your version:</h2>
+			<h3>
+				{{HideLetter('S')}}{{HideLetter('I')}}{{HideLetter('R')}}  {{HideLetter('A')}}{{HideLetter('L')}}{{HideLetter('F')}}{{HideLetter('R')}}{{HideLetter('E')}}{{HideLetter('D')}} 
+				{{HideLetter('O')}}{{HideLetter('F')}} 
+				{{HideLetter('G')}}{{HideLetter('O')}}{{HideLetter('T')}}{{HideLetter('H')}}{{HideLetter('A')}}{{HideLetter('M')}}
+			</h3>
+			<div class="col-lg-6">
+				<h2>My Dog</h2>
+				<img src="dog.png" class="img-responsive">
+			</div>
+			<div class="col-lg-6">
+				<h2>Your Hint</h2>
+				<img src="hint.jpg" class="img-responsive">
+			</div>
+			
+        </div>
+
+		<div class="col-lg-6">
+			<div ng-repeat="letter in letters | orderBy:'labelValue'">
+				<label style="width:30px;">{{letter.labelValue }} = </label>
+				<input ng-model="letter.maskedValue" type="text"/>
+			</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>Built by <a href="mailto:keith@murfbard.com">Keith Murphy</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+	
+</body>
+</html>
